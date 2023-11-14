@@ -1,0 +1,8 @@
+# Ignorar ngrok.exe
+ngrok.exe
+
+# Ignorar la carpeta @@_Text
+@@_Text/
+
+# Ignorar el archivo IRON WEB.code-workspace
+IRON WEB.code-workspace

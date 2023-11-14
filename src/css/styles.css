@@ -1,0 +1,37 @@
+:root{
+    --gris:#D9D9D9;
+    --rojo:#D40A19;
+    --font-family:'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+}
+html {
+    font-size: 62.5%;
+    font: 'Montserrat';
+    font-weight: 900;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size:16px; /* 1rem=10px */
+    background-color: black;
+}
+header{
+    display: flex;
+    flex-direction: column;
+   
+}
+a{
+    margin: 2rem;
+    color: aliceblue;
+    text-decoration: none;
+}
+h1{
+    color: white;
+}
+p{
+    font-weight: 200;
+    font-style: 'Montserrat';
+    color: white;
+}
