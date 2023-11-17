@@ -40,7 +40,6 @@ $rowS = $statementStatistics->fetch(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="shortcut icon" href="./src/SVG/mancuerna_roja.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +56,7 @@ $rowS = $statementStatistics->fetch(PDO::FETCH_ASSOC);
     </title>
 </head>
 <body>
-    <main>
+    <main >
         <section class="nav">
             <button class="home-button" id="home-button"><img src="./src/img/botonMancuerna.png" alt=""></button>
             <div class="user">
@@ -83,7 +82,7 @@ $rowS = $statementStatistics->fetch(PDO::FETCH_ASSOC);
                     </br>
                     <a class="link" href="#Contactos">CONTACT</a>
                     </br>
-                    <a class="update" id="update">UPDATE STATS</a>
+                    <a href="/admin/usuarios/update.php"class="update" id="update">UPDATE STATS</a>
                 </div>
             </div>
         </section>

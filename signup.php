@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $age = calcularEdad($fNac);
 
                 // Inserta las estadísticas del usuario en la base de datos
-                $query = "INSERT INTO stadistics (userid, age, weigth, heigth, activity_factor) VALUES (:userId, :age, :peso, :altura, :actividadFisica)";
+                $query = "INSERT INTO stadistics (userid, age, weight, height, activity_factor) VALUES (:userId, :age, :peso, :altura, :actividadFisica)";
                 $stmt = $db->prepare($query);
                 $stmt->bindParam(':userId', $userId);
                 $stmt->bindParam(':age', $age);
@@ -90,6 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // Si se insertaron las estadísticas con éxito, redirige al usuario a la página principal
                 if ($resultado) {
+                    $_SESSION['user_id'] = $row['id'];
+                    $_SESSION['user_name'] = $row['username'];
                     header('Location: main_page.php?id=' . $userId);
                     exit;
                 } else {
@@ -139,15 +141,15 @@ function calcularEdad($fechaNacimiento)
             <input class="box" type="text" name="username" placeholder="Username" id="username">
             <input class="box" type="email" name="email" placeholder="Correo Electronico" id="email">
             <input class="box" type="password" name="pwd" placeholder="Contraseña" id="pwd">
-            <input class="box" type="number" name="heigth" placeholder="Altura (cm)" id="heigth">
-            <input class="box" type="number" name="weigth" placeholder="Peso (kg)" id="weigth">
+            <input class="box" type="number" name="heigth" placeholder="Altura (cm)" id="height">
+            <input class="box" type="number" name="weigth" placeholder="Peso (kg)" id="weight">
             <select class="select--ph" name="actividadFisica" id="actividadFisica">
-                <option value="0">Actividad Física</option>
-                <option value="1">Poco o Ninguno</option>
-                <option value="2">Ligero (1-3 días/semana)</option>
-                <option value="3">Moderado (3-5 días/semana)</option>
-                <option value="4">Fuerte (6-7 días/semana)</option>
-                <option value="5">Muy Fuerte (2 sesiones/día)</option>
+                <option value="0">ACTIVITY FACTOR</option>
+                <option value="1">LITTLE OR NONE</option>
+                <option value="2">LIGHT (1-3 DAYS/WEEK)</option>
+                <option value="3">MODERATE (3-5 DAYS/WEEK)</option>
+                <option value="4">HEAVY (6-7 DAYS/WEEK)</option>
+                <option value="5">VERY HEAVY (2 SESSIONS/DAY)</option>
             </select>
             <input type="submit" name="signup" class="submit--button" value="SIGNUP">
             <a href="index.php" class="exit--button">Salir</a>
