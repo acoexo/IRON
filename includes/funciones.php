@@ -1,15 +1,22 @@
 <?php
     define('TEMPLATES_URL',__DIR__.'\\templates');
-    define('FUNCIONES_URL',__DIR__.'funciones.php');
+    define('FUNCIONES_URL', __DIR__.'funciones.php');
     function incluirTemplate($nombre, $inicio=false){
-        include TEMPLATES_URL."\\${nombre}.php";
+            include TEMPLATES_URL."\\${nombre}.php";
     }
-    function estaAutenticado():bool {
-        session_start();
-        $auth=$_SESSION['login'];
-        if($auth){
+    function estaAutenticado()  {
+            session_start();
+            if(!$_SESSION['login']) {
+                header ('Location: /');
+                return false;
+            }    
             return true;
         }
-        return false;
+    function debuguear($variable){
+    
+        }
+        function s($html):string{
+        $s=htmlspecialchars($html);
+        return $s;
     }
 ?>

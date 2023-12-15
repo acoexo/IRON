@@ -22,6 +22,7 @@ session_start();
     <title>IRON</title>
 </head>
 <body>
+    <style> body:{background-color: black;}</style>
     <h1>¿Are you sure?</h1>
     <p>You are about to delete all your data; once deleted, it cannot be recovered. Are you sure?</p>
     <form action="/admin/usuarios/borrar.php" method="post">

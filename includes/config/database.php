@@ -1,6 +1,6 @@
 <?php
 function connectDB(){
-    $dsn = 'mysql:host=192.168.0.201;dbname=irondb';
+    $dsn = 'mysql:host=localhost;dbname=irondb';
     $usuario = 'iron_user';
     $contrasena = '1357'; 
     

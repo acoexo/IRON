@@ -1,56 +1,20 @@
 <?php
-require "./includes/app.php";
-// Inicia o reanuda la sesión
+require "includes/app.php";
+use App\Usuario;
+$usuario = new Usuario();
 session_start();
 if (isset($_SESSION['user_name'])) {
     header('Location: main_page.php');
     exit;
-}else{
-   // Establece una conexión a la base de datos
-    $db = connectDB();
-
-    // Inicializa la variable de errores
-    $errores = "";
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST['username']) && isset($_POST['password'])) {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-
-            try {
-                // Consulta para buscar al usuario por nombre de usuario
-                $query = "SELECT id, username, password FROM users WHERE username = :username";
-                $statement = $db->prepare($query);
-                $statement->bindParam(':username', $username, PDO::PARAM_STR);
-                $statement->execute();
-
-                if ($statement->rowCount() > 0) {
-                    // Se encontró un usuario con el nombre de usuario proporcionado
-                    $row = $statement->fetch(PDO::FETCH_ASSOC);
-                    $storedPassword = $row['password'];
-
-                    // Verifica si la contraseña coincide con la contraseña almacenada
-                    if (password_verify($password, $storedPassword)) {
-                        // Inicia una sesión para el usuario y almacena información en las variables de sesión
-                        $_SESSION['user_id'] = $row['id'];
-                        $_SESSION['user_name'] = $row['username'];
-                        
-                        // Redirige al usuario a la página principal
-                        header('Location: main_page.php');
-                        exit;
-                    } else {
-                        $errores = "Contraseña incorrecta. Inténtalo de nuevo.";
-                    }
-                } else {
-                    $errores = "Usuario no encontrado. Verifica tus credenciales.";
-                }
-            } catch (PDOException $e) {
-                $errores = "Error de conexión a la base de datos: " . $e->getMessage();
-            }
-        }
-    } 
 }
-
+$errores = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $usuario->iniciarSesion($username, $password);
+    }
+}
 ?>
 
 <!DOCTYPE html>

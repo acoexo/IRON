@@ -48,8 +48,6 @@ session_start();
                         <a class="link" href="#Nosotros">US</a>
                         </br>
                         <a class="link" href="#Contactos">CONTACT</a>
-                        </br>
-                        <a class="update" id="update">UPDATE STATS</a>
                     </div>
                 </div>
             </section>
@@ -60,13 +58,13 @@ session_start();
                     <img class="escul2" src="./src/img/sculpture/escul2.png" alt="" width="100px" height="100px">
                     
                     <a class="start" href="/login.php"><h1>GET STARTED</h1></a>   
-                    <p class="info">MORE INFO</p>
+                    <a href="#second_view"class="info">MORE INFO</a>
                     <p class="arrow"><i class="bi bi-arrow-down"></i></p>
                 </div>
 
 
 
-                <div class="second_view">
+                <div class="second_view" id="second_view">
                     <h1>QUE </br>
                         ES  </br>
                         IRON

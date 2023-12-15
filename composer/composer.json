@@ -1,16 +1,18 @@
 {
     "name": "2daw/ironweb",
     "description": "proyecto",
-    "autoload": {
-        "psr-4": {
-            "App\\": "./../clases"
-        }
-    },
     "authors": [
         {
             "name": "acoexo",
             "email": "acseoyo04@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "intervention/image": "^2.7"
+    },
+    "autoload":{
+        "psr-4":{
+            "App\\":"./clases"
+        }
+    }
 }
